@@ -1,0 +1,20 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="live_data"></div>
+
+<script>
+    $(document).ready(function(){  
+        //Подгружаем BACK шаблон
+        function fetch_data(){ 
+            $.ajax({  
+                url:"/cities/back",  
+                method:"GET",
+                success:function(data){  
+                    $('#live_data').html(data);
+                    setKeydownmyForm()
+                }   
+            });  
+        } 
+        fetch_data();
+    });
+</script>
+
