@@ -15,12 +15,30 @@ class StructureModel
         $num = 0;
         $cities = [];
         
-        $txt = file("src/cities.txt");
-        foreach ($txt as $key => $value) {
-            if(mb_substr($value, 0, 1, "UTF-8") == $letter){
-                $cities[$num++] = $value;
+        //Получаем массив городов на нужную нам букву
+        $txt = file("src/cities.txt");      
+        for ($a = 0; $a < count($txt); $a++){
+            if(mb_substr($txt[$a], 0, 1, "UTF-8") == $letter){
+                $cities[$num++] = substr($txt[$a], 0, -1);
             }
         }
-        var_dump($_SESSION['named']);
+
+        //Выбираем из массива, город который ранее не назывался
+        for ($i = 0; $i < count($cities); $i++) {
+            foreach ($_SESSION['named'] as $key => $value) {
+                
+                if($value == $cities[$i]){
+                    $variant = "yes";
+                }
+            }
+            if(!isset($variant)){
+                $key = $i;
+            }
+        }
+        
+        //Возвращаем результат
+        //Название города
+        var_dump($cities[$key]);
+       
     }
 }

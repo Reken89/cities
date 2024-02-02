@@ -59,6 +59,7 @@ class IndexController extends BaseController
             $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
             $object = new StructureModel;
             $answer = $object->city($letter);
+            //echo $answer;
         }
 
     }
