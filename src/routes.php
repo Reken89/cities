@@ -16,4 +16,9 @@ if($route[2] == "index" || $route[2] == ""){
 }elseif ($route[2] == "back") {
     $route = new IndexController;
     $route->back(); 
-}    
+    
+//Роут в основную структуру приложения    
+}elseif ($route[2] == "city") {
+    $route = new IndexController;
+    $route->city(); 
+}     

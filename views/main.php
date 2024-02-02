@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 	<head>
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Wesoon - Coming Soon HTML Template</title>
+	    <title>Игра города</title>
 	    <meta name="description" content="Responsive HTML5 Template" />
 	    <meta name="keywords" content="Onepage, creative, modern, bootstrap 5, multipurpose, clean" />
 	    <meta name="author" content="Shreethemes" />
@@ -46,9 +46,9 @@
                                 <p class="text-white para-desc mx-auto mt-2 mb-0">Введите название города и нажмите «Старт»</br>После чего, система продолжит игру</p>
             
                                 <div class="subcribe-form mt-4 pt-2">
-                                    <form>
-                                        <input type="text" id="subscribeEmail" class="bg-white opacity-6 rounded shadow" required placeholder="Название города">
-                                        <button type="submit" class="btn btn-primary">Старт</button>
+                                    <form id="start" method="post">
+                                        <input type="text" name="city" class="bg-white opacity-6 rounded shadow" required placeholder="Название города">
+                                        <button type="button" id="btn" class="btn btn-primary">Старт</button>
                                     </form>
                                 </div>
             

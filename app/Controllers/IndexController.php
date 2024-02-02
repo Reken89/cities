@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\StructureModel;
 
 class IndexController extends BaseController
 {
@@ -30,6 +31,36 @@ class IndexController extends BaseController
     public function back()
     {
         $this->view->render($this->back, $this->data);
+    }
+    
+    /**
+     * Получаем название города из формы
+     * Запускаем работу приложения
+     *
+     * @param 
+     * @return render()
+     */
+    public function city()
+    {
+        if(!isset($_SESSION['named'])){
+            $_SESSION['named'] = [];
+            $_SESSION['num'] = 0;
+        }
+        
+        $city = $_POST['city'];
+        
+        if(isset($city)){
+            $num = $_SESSION['num'];
+            $a = $num + 1;
+            $_SESSION['named'][$a] = $city;
+            $_SESSION['num'] = $a;
+                       
+            $last = mb_substr($city, -1, 1, "UTF-8");
+            $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
+            $object = new StructureModel;
+            $answer = $object->city($letter);
+        }
+
     }
 
 }

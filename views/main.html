@@ -15,6 +15,20 @@
             });  
         } 
         fetch_data();
+        
+        //Выполняем действие, получаем название города из формы
+        $(document).on('click', '#btn', function(){              
+            $.ajax({
+                url:"/cities/city",  
+                method:"post",
+                data:$('#start').serialize(),
+                dataType:"text", 
+                success:function(data){
+                    alert(data);
+                    fetch_data();
+                } 
+            })               
+        })
     });
 </script>
 
