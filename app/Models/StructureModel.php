@@ -32,13 +32,17 @@ class StructureModel
                 }
             }
             if(!isset($variant)){
-                $key = $i;
+                $cert = $i;
+                $variant = "no";
+                break;
             }
         }
         
-        //Возвращаем результат
-        //Название города
-        var_dump($cities[$key]);
+        if($variant == "yes"){
+            return false;
+        }else{
+            return $cities[$i];
+        }
        
     }
 }
