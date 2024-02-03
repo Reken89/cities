@@ -36,11 +36,19 @@
                             </div>
                             <div class="title-heading text-center my-auto">
                                 <div class="wave-effect coming-soon fw-bold display-3 text-white">
-                                    <span style="--a:1">Г</span>
-                                    <span style="--a:2">О</span>
-                                    <span style="--a:3">Р</span>
-                                    <span style="--a:4">О</span>
-                                    <span style="--a:5">Д</span>
+                                    <?php if(isset($_SESSION['named'])){
+                                        for ($a = 0; $a < mb_strlen($_SESSION['city'], 'utf-8'); $a++){
+                                            ?>
+                                            <span style="--a:<?php $a ?>"><?php echo mb_substr($_SESSION['city'],$a,1,'UTF-8');  ?></span>
+                                            <?php
+                                        }
+                                    }else{ ?>
+                                        <span style="--a:1">Г</span>
+                                        <span style="--a:2">О</span>
+                                        <span style="--a:3">Р</span>
+                                        <span style="--a:4">О</span>
+                                        <span style="--a:5">Д</span>
+                                    <?php } ?>
                                 </div>
                                 
                                 <p class="text-white para-desc mx-auto mt-2 mb-0">Введите название города и нажмите «Старт»</br>После чего, система продолжит игру</p>

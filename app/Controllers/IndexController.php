@@ -75,7 +75,7 @@ class IndexController extends BaseController
             $_SESSION['named'][$b] = $candidate;
             $_SESSION['num'] = $b;
             
-            var_dump($candidate);
+            $_SESSION['city'] = $candidate;
 
         }
 
