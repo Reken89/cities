@@ -5,7 +5,7 @@ namespace App\Models;
 class StructureModel
 {
     /**
-     * Получаем город из списка
+     * Получаем массив городов
      *
      * @param string $letter
      * @return render()
@@ -22,27 +22,30 @@ class StructureModel
                 $cities[$num++] = substr($txt[$a], 0, -1);
             }
         }
-
-        //Выбираем из массива, город который ранее не назывался
-        for ($i = 0; $i < count($cities); $i++) {
-            foreach ($_SESSION['named'] as $key => $value) {
-                
-                if($value == $cities[$i]){
-                    $variant = "yes";
-                }
-            }
-            if(!isset($variant)){
-                $cert = $i;
-                $variant = "no";
-                break;
+     
+        return $cities;
+       
+    }
+    
+    /**
+     * Выполняем проверку, назывался ли город ранее
+     *
+     * @param string $candidate
+     * @return render()
+     */
+    public function choise(string $candidate)
+    {
+        foreach ($_SESSION['named'] as $key => $value) {            
+            if($value == $candidate){
+                $status = "was";
             }
         }
         
-        if($variant == "yes"){
+        if(isset($status)){
             return false;
         }else{
-            return $cities[$i];
+            return $candidate;
         }
-       
+           
     }
 }

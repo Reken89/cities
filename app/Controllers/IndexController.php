@@ -50,6 +50,7 @@ class IndexController extends BaseController
         $city = $_POST['city'];
         
         if(isset($city)){
+            //Записываем названный город в список названных
             $num = $_SESSION['num'];
             $a = $num + 1;
             $_SESSION['named'][$a] = $city;
@@ -59,7 +60,23 @@ class IndexController extends BaseController
             $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
             $object = new StructureModel;
             $answer = $object->city($letter);
-            var_dump($answer);
+            
+            foreach ($answer as $key => $value) { 
+                $candidate = $object->choise($value);
+                if($candidate == true){
+                    break;
+                }else{
+                    $candidate = "Система больше не знает городов";
+                }
+            }
+            
+            //Записываем город в список названных
+            $b = $a + 1;
+            $_SESSION['named'][$b] = $candidate;
+            $_SESSION['num'] = $b;
+            
+            var_dump($candidate);
+
         }
 
     }
