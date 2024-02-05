@@ -23,6 +23,7 @@ class StructureModel
             }
         }
      
+        shuffle($cities);
         return $cities;
        
     }

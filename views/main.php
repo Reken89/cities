@@ -51,7 +51,11 @@
                                     <?php } ?>
                                 </div>
                                 
-                                <p class="text-white para-desc mx-auto mt-2 mb-0">Введите название города и нажмите «Старт»</br>После чего, система продолжит игру</p>
+                                <?php if(isset($_SESSION['text'])){ ?>
+                                    <p class="text-white para-desc mx-auto mt-2 mb-0"><?php echo $_SESSION['text']; ?></p>
+                                <?php }else{ ?>
+                                    <p class="text-white para-desc mx-auto mt-2 mb-0">Введите название города и нажмите «Старт»</br>После чего, система продолжит игру</p>
+                                <?php } ?>
             
                                 <div class="subcribe-form mt-4 pt-2">
                                     <form id="start" method="post">

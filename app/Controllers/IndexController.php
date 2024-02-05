@@ -49,7 +49,12 @@ class IndexController extends BaseController
         
         $city = $_POST['city'];
         
-        if(isset($city)){
+        if($city == true){
+            //Отправляем слово на проверку
+            if(!empty($_SESSION['named'])){
+                
+            }
+            
             //Записываем названный город в список названных
             $num = $_SESSION['num'];
             $a = $num + 1;
@@ -76,7 +81,10 @@ class IndexController extends BaseController
             $_SESSION['num'] = $b;
             
             $_SESSION['city'] = $candidate;
+            $_SESSION['text'] = "Введите название города";
 
+        }else{
+            $_SESSION['text'] = "Вы не ввели название города!";
         }
 
     }
