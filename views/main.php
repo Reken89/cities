@@ -36,7 +36,7 @@
                             </div>
                             <div class="title-heading text-center my-auto">
                                 <div class="wave-effect coming-soon fw-bold display-3 text-white">
-                                    <?php if(isset($_SESSION['named'])){
+                                    <?php if(!empty($_SESSION['named'])){
                                         for ($a = 0; $a < mb_strlen($_SESSION['city'], 'utf-8'); $a++){
                                             ?>
                                             <span style="--a:<?php $a ?>"><?php echo mb_substr($_SESSION['city'],$a,1,'UTF-8');  ?></span>
