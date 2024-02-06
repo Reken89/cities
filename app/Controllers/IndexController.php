@@ -68,6 +68,9 @@ class IndexController extends BaseController
 
                     $_SESSION['city'] = $value;
                     $_SESSION['text'] = "Введите название города";
+                    
+                    //Начисляем очки
+                    $object->points();
                 }else{
                     $_SESSION['text'] = "Вы неправильно ввели название города!";
                 }
@@ -96,6 +99,8 @@ class IndexController extends BaseController
 
                     $_SESSION['city'] = $value;
                     $_SESSION['text'] = "Введите название города";
+                    //Начисляем очки
+                    $object->points();
                 }else{
                     if($test_one == false){
                         $_SESSION['text'] = "По правилам игры, названный Вами город не подходит";

@@ -12,7 +12,13 @@ class StructureModel
      */
     public function city(string $city): array
     {
-        $last = mb_substr($city, -1, 1, "UTF-8");
+        $examin = mb_substr($city, -1, 1, "UTF-8");
+        if($examin == "ь" || $examin == "ъ" || $examin == "ы"){
+            $last = mb_substr($city, -2, 1, "UTF-8");
+        }else{
+            $last = mb_substr($city, -1, 1, "UTF-8");
+        }
+
         $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
         
         $num = 0;
@@ -53,6 +59,23 @@ class StructureModel
     }
     
     /**
+     * Записываем в глобальную переменную
+     * Начисляем 10 очков
+     *
+     * @param
+     * @return 
+     */
+    public function points()
+    {
+        if(!isset($_SESSION['points'])){
+            $_SESSION['points'] = 0;
+        }
+        
+        $points = $_SESSION['points'] + 10;
+        $_SESSION['points'] = $points; 
+    }
+    
+    /**
      * Выполняем проверку, назывался ли город ранее
      *
      * @param string $candidate
@@ -85,7 +108,13 @@ class StructureModel
      */
     public function test_two(string $word)
     {
-        $last = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
+        $examin = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
+        if($examin == "ь" || $examin == "ъ" || $examin == "ы"){
+            $last = mb_substr($_SESSION['city'], -3, 1, "UTF-8");
+        }else{
+            $last = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
+        }
+        
         $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
         
         if(mb_substr($word, 0, 1, "UTF-8") == $letter){

@@ -33,6 +33,11 @@
                         <div class="d-flex flex-column min-vh-100 justify-content-center px-md-5 py-5 px-4">
                             <div class="text-center">
                                 <a href=""><img src="images/logo-icon-64.png" alt=""></a>
+                                <?php if(isset($_SESSION['points'])){
+                                    ?> <p class="text-white para-desc mx-auto mt-2 mb-0">Ваши очки: <?php echo $_SESSION['points']; ?></p> <?php
+                                }else{
+                                    ?> <p class="text-white para-desc mx-auto mt-2 mb-0">Ваши очки: 0</p> <?php
+                                } ?>
                             </div>
                             <div class="title-heading text-center my-auto">
                                 <div class="wave-effect coming-soon fw-bold display-3 text-white">
