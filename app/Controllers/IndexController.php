@@ -46,36 +46,67 @@ class IndexController extends BaseController
         
         if($city == true){
             $object = new StructureModel;
-            
-            //Отправляем слово на проверку
-            if(!empty($_SESSION['named'])){
+            if(empty($_SESSION['named'])){
+                $test_three = $object->test_three($city);
+                if($test_three == true){
+                    //Записываем названный город в список названных
+                    $object->memory($city);
+
+                    $answer = $object->city($city);
+
+                    foreach ($answer as $key => $value) { 
+                        $candidate = $object->test_one($value);
+                        if($candidate == true){
+                            break;
+                        }else{
+                            $value = "Система больше не знает городов";
+                        }
+                    }
+
+                    //Записываем город в список названных
+                    $object->memory($value);
+
+                    $_SESSION['city'] = $value;
+                    $_SESSION['text'] = "Введите название города";
+                }else{
+                    $_SESSION['text'] = "Вы неправильно ввели название города!";
+                }
+            }else{
                 $test_one = $object->test_two($city);
                 $test_two = $object->test_one($city);
-            }
-            $test_three = $object->test_three($city);
-            
-            //Записываем названный город в список названных
-            $object->memory($city);
-                       
-            $last = mb_substr($city, -1, 1, "UTF-8");
-            $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
-            $answer = $object->city($letter);
-            
-            foreach ($answer as $key => $value) { 
-                $candidate = $object->test_one($value);
-                if($candidate == true){
-                    break;
+                $test_three = $object->test_three($city);
+                
+                if($test_one == true && $test_two == true && $test_three == true){
+                    //Записываем названный город в список названных
+                    $object->memory($city);
+
+                    $answer = $object->city($city);
+
+                    foreach ($answer as $key => $value) { 
+                        $candidate = $object->test_one($value);
+                        if($candidate == true){
+                            break;
+                        }else{
+                            $value = "Система больше не знает городов";
+                        }
+                    }
+
+                    //Записываем город в список названных
+                    $object->memory($value);
+
+                    $_SESSION['city'] = $value;
+                    $_SESSION['text'] = "Введите название города";
                 }else{
-                    $value = "Система больше не знает городов";
+                    if($test_one == false){
+                        $_SESSION['text'] = "По правилам игры, названный Вами город не подходит";
+                    }elseif ($test_two == false) {
+                        $_SESSION['text'] = "Город уже назывался ранее в игре";
+                    }elseif ($test_three == false) {
+                        $_SESSION['text'] = "Вы неправильно ввели название города!";
+                    }
                 }
             }
-
-            //Записываем город в список названных
-            $object->memory($value);
-                      
-            $_SESSION['city'] = $value;
-            $_SESSION['text'] = "Введите название города";
-
+            
         }else{
             $_SESSION['text'] = "Вы не ввели название города!";
         }

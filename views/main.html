@@ -17,17 +17,20 @@
         fetch_data();
         
         //Выполняем действие, получаем название города из формы
-        $(document).on('click', '#btn', function(){              
-            $.ajax({
-                url:"/cities/city",  
-                method:"post",
-                data:$('#start').serialize(),
-                dataType:"text", 
-                success:function(data){
-                    //alert(data);
-                    fetch_data();
-                } 
-            })               
+        $(document).on('click', '#btn', function(){
+            function start() {
+                $.ajax({
+                    url:"/cities/city",  
+                    method:"post",
+                    data:$('#start').serialize(),
+                    dataType:"text", 
+                    success:function(data){
+                        //alert(data);
+                        fetch_data();
+                    } 
+                }) 
+            }
+            let timeout = setTimeout(start, 500);
         })
     });
 </script>

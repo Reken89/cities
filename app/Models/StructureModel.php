@@ -7,11 +7,14 @@ class StructureModel
     /**
      * Получаем массив городов
      *
-     * @param string $letter
-     * @return render()
+     * @param string $city
+     * @return array
      */
-    public function city(string $letter)
+    public function city(string $city): array
     {
+        $last = mb_substr($city, -1, 1, "UTF-8");
+        $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
+        
         $num = 0;
         $cities = [];
         
