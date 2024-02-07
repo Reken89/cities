@@ -22,7 +22,7 @@
     </head>
     <body>        
         <!-- Start -->
-        <section class="position-relative" style="background: url('images/bg/1.jpg') center">
+        <section class="position-relative">
             <div class="bg-overlay"></div>
             <div class="container-fluid">
                 <div class="row">
