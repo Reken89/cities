@@ -28,7 +28,7 @@ class StructureModel
         $txt = file("src/cities.txt");      
         for ($a = 0; $a < count($txt); $a++){
             if(mb_substr($txt[$a], 0, 1, "UTF-8") == $letter){
-                $cities[$num++] = substr($txt[$a], 0, -1);
+                $cities[$num++] = substr($txt[$a], 0, -2);
             }
         }
      
@@ -83,7 +83,7 @@ class StructureModel
      */
     public function test_one(string $candidate)
     {
-        foreach ($_SESSION['named'] as $key => $value) {            
+        foreach ($_SESSION['named'] as $key => $value) { 
             if($value == $candidate){
                 $status = "was";
             }
