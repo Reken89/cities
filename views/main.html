@@ -2,12 +2,31 @@
 <div id="live_data"></div>
 
 <script>
-    $(document).ready(function(){  
+    $(document).ready(function(){ 
+        
+        //Выполняем действие, при нажатии на клавишу enter
+        function setKeydownmyForm() {
+            $('input').keydown(function(e) {
+                if (e.keyCode === 13) {
+                    $.ajax({
+                        url:"/cities/city",  
+                        method:"post",
+                        data:$('#start').serialize(),
+                        dataType:"text", 
+                        success:function(data){
+                            //alert(data);
+                            fetch_data();
+                        } 
+                    }) 
+                }                
+            })           
+        }
+        
         //Подгружаем BACK шаблон
         function fetch_data(){ 
             $.ajax({  
                 url:"/cities/back",  
-                method:"GET",
+                method:"get",
                 success:function(data){  
                     $('#live_data').html(data);
                     setKeydownmyForm()
@@ -16,7 +35,7 @@
         } 
         fetch_data();
         
-        //Выполняем действие, получаем название города из формы
+        //Выполняем действие, при нажатии на кнопку
         $(document).on('click', '#btn', function(){
             function start() {
                 $.ajax({

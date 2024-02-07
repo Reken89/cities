@@ -1,29 +1,26 @@
 <!doctype html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Игра города</title>
-	    <meta name="description" content="Responsive HTML5 Template" />
-	    <meta name="keywords" content="Onepage, creative, modern, bootstrap 5, multipurpose, clean" />
-	    <meta name="author" content="Shreethemes" />
-	    <meta name="website" content="https://shreethemes.in" />
-	    <meta name="email" content="support@shreethemes.in" />
-	    <meta name="version" content="1.0.0" />
-	    <!-- favicon -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Игра города</title>
+        <meta name="description" content="Responsive HTML5 Template" />
+        <meta name="keywords" content="Onepage, creative, modern, bootstrap 5, multipurpose, clean" />
+        <meta name="author" content="Shreethemes" />
+        <meta name="website" content="https://shreethemes.in" />
+        <meta name="email" content="support@shreethemes.in" />
+        <meta name="version" content="1.0.0" />
+        <!-- favicon -->
         <link href="images/favicon.ico" rel="shortcut icon">
-		<!-- Bootstrap core CSS -->
-	    <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="assets/css/tobii.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
-	    <!-- Custom  Css -->
-	    <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-	</head>
-
-	<body>
-        
-
+        <!-- Custom  Css -->
+        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
+    </head>
+    <body>        
         <!-- Start -->
         <section class="position-relative" style="background: url('images/bg/1.jpg') center">
             <div class="bg-overlay"></div>
@@ -72,7 +69,7 @@
                                 <p class="text-white-50 mt-3"><span class="text-danger fw-bold">*</span>Внизу отображается список городов, которые уже назывались</p>
                                 <?php if(!empty($_SESSION['named'])){
                                     for ($a = 1; $a <= count($_SESSION['named']); $a++){
-                                        echo $_SESSION['named'][$a];                                                                                                                                         
+                                        ?> <a style="color:hsla(200,100%,40%,0.9); font-size:18px;"><?php echo $_SESSION['named'][$a]; ?></a> <?php                                                                                                                                      
                                     }
                                 } ?>
                             </div>
@@ -84,11 +81,11 @@
         <!-- End -->   
 
         <!-- JAVASCRIPTS -->
-	    <script src="assets/js/bootstrap.bundle.min.js"></script>
-	    <script src="assets/js/tobii.min.js"></script>
-	    <script src="assets/js/contact.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/tobii.min.js"></script>
+        <script src="assets/js/contact.js"></script>
         <script src="assets/js/feather.min.js"></script>
-	    <!-- Custom -->
-	    <script src="assets/js/app.js"></script>
+        <!-- Custom -->
+        <script src="assets/js/app.js"></script>
     </body>
 </html>
