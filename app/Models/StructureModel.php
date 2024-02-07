@@ -13,7 +13,7 @@ class StructureModel
     public function city(string $city): array
     {
         $examin = mb_substr($city, -1, 1, "UTF-8");
-        if($examin == "ь" || $examin == "ъ" || $examin == "ы"){
+        if($examin == "ь" || $examin == "ъ" || $examin == "ы" || $examin == "й"){
             $last = mb_substr($city, -2, 1, "UTF-8");
         }else{
             $last = mb_substr($city, -1, 1, "UTF-8");
@@ -109,7 +109,7 @@ class StructureModel
     public function test_two(string $word)
     {
         $examin = mb_substr($_SESSION['city'], -1, 1, "UTF-8");
-        if($examin == "ь" || $examin == "ъ" || $examin == "ы"){
+        if($examin == "ь" || $examin == "ъ" || $examin == "ы" || $examin == "й"){
             $last = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
         }else{
             $last = mb_substr($_SESSION['city'], -1, 1, "UTF-8");
