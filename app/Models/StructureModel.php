@@ -108,11 +108,11 @@ class StructureModel
      */
     public function test_two(string $word)
     {
-        $examin = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
+        $examin = mb_substr($_SESSION['city'], -1, 1, "UTF-8");
         if($examin == "ь" || $examin == "ъ" || $examin == "ы"){
-            $last = mb_substr($_SESSION['city'], -3, 1, "UTF-8");
-        }else{
             $last = mb_substr($_SESSION['city'], -2, 1, "UTF-8");
+        }else{
+            $last = mb_substr($_SESSION['city'], -1, 1, "UTF-8");
         }
         
         $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
