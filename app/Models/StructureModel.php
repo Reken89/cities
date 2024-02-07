@@ -28,7 +28,7 @@ class StructureModel
         $txt = file("src/cities.txt");      
         for ($a = 0; $a < count($txt); $a++){
             if(mb_substr($txt[$a], 0, 1, "UTF-8") == $letter){
-                $cities[$num++] = substr($txt[$a], 0, -2);
+                $cities[$num++] = mb_substr($txt[$a], 0, -2, "UTF-8");
             }
         }
      
@@ -136,7 +136,7 @@ class StructureModel
     {
         $txt = file("src/cities.txt");      
         for ($a = 0; $a < count($txt); $a++){
-            $result = substr($txt[$a], 0, -2);
+            $result = mb_substr($txt[$a], 0, -2, "UTF-8");
             if($result == $city){
                 $status = "yes";
                 break;
