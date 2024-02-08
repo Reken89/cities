@@ -66,6 +66,7 @@
                                     </form>
                                 </div>
             
+                                <p class="text-white-50 mt-3"><span class="text-danger fw-bold">*</span>Если название города заканчивается на буквы “й”, “ъ”, “ы”, “ь”, то для продолжения игры нужно использовать предпоследнюю букву.</p>
                                 <p class="text-white-50 mt-3"><span class="text-danger fw-bold">*</span>Внизу отображается список городов, которые уже назывались</p>
                                 <?php if(!empty($_SESSION['named'])){
                                     for ($a = 1; $a <= count($_SESSION['named']); $a++){
