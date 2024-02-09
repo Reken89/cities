@@ -10,15 +10,19 @@ $route = str_replace(".php", "", $route);
 //Главная страница
 if($route[2] == "index" || $route[2] == ""){
     $route = new IndexController;
-    $route->index(); 
+    $route->Index(); 
 
 //Back главной страницы    
 }elseif ($route[2] == "back") {
     $route = new IndexController;
-    $route->back(); 
+    $route->Back(); 
     
 //Роут в основную структуру приложения    
 }elseif ($route[2] == "city") {
     $route = new IndexController;
-    $route->city(); 
+    $route->WorkApplication(); 
+    
+//Заглушка #    
+}else{    
+    echo "Запрашиваемая Вами страница не существует!";
 }     

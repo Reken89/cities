@@ -9,7 +9,6 @@ class IndexController extends BaseController
 {
     private $page = "/views/main.html";
     private $back = "/views/main.php";
-    private $data;
     
     /**
      * Показываем главную страницу в представлении
@@ -17,9 +16,9 @@ class IndexController extends BaseController
      * @param 
      * @return render()
      */
-    public function index()
+    public function Index()
     {
-        $this->view->render($this->page, $this->data);
+        $this->view->render($this->page);
     }
     
     /**
@@ -28,9 +27,9 @@ class IndexController extends BaseController
      * @param 
      * @return render()
      */
-    public function back()
+    public function Back()
     {
-        $this->view->render($this->back, $this->data);
+        $this->view->render($this->back);
     }
     
     /**
@@ -38,24 +37,24 @@ class IndexController extends BaseController
      * Запускаем работу приложения
      *
      * @param 
-     * @return render()
+     * @return
      */
-    public function city()
+    public function WorkApplication()
     {      
         $city = $_POST['city'];
         
         if($city == true){
             $object = new StructureModel;
             if(empty($_SESSION['named'])){
-                $test_three = $object->test_three($city);
+                $test_three = $object->RealCity($city);
                 if($test_three == true){
                     //Записываем названный город в список названных
-                    $object->memory($city);
+                    $object->Memory($city);
 
                     $answer = $object->SelectCities($city);
 
                     foreach ($answer as $key => $value) { 
-                        $candidate = $object->test_one($value);
+                        $candidate = $object->RepeatCity($value);
                         if($candidate == true){
                             break;
                         }else{
@@ -64,29 +63,29 @@ class IndexController extends BaseController
                     }
 
                     //Записываем город в список названных
-                    $object->memory($value);
+                    $object->Memory($value);
 
                     $_SESSION['city'] = $value;
                     $_SESSION['text'] = "Введите название города";
                     
                     //Начисляем очки
-                    $object->points();
+                    $object->Points();
                 }else{
                     $_SESSION['text'] = "Вы неправильно ввели название города!";
                 }
             }else{
-                $test_one = $object->test_one($city);
-                $test_two = $object->test_two($city);
-                $test_three = $object->test_three($city);
+                $test_one = $object->RepeatCity($city);
+                $test_two = $object->FirstLetter($city);
+                $test_three = $object->RealCity($city);
                 
                 if($test_one == true && $test_two == true && $test_three == true){
                     //Записываем названный город в список названных
-                    $object->memory($city);
+                    $object->Memory($city);
 
                     $answer = $object->SelectCities($city);
 
                     foreach ($answer as $key => $value) { 
-                        $candidate = $object->test_one($value);
+                        $candidate = $object->RepeatCity($value);
                         if($candidate == true){
                             break;
                         }else{
@@ -95,12 +94,12 @@ class IndexController extends BaseController
                     }
 
                     //Записываем город в список названных
-                    $object->memory($value);
+                    $object->Memory($value);
 
                     $_SESSION['city'] = $value;
                     $_SESSION['text'] = "Введите название города";
                     //Начисляем очки
-                    $object->points();
+                    $object->Points();
                 }else{
                     if($test_one == false){
                         $_SESSION['text'] = "Город уже назывался ранее в игре";

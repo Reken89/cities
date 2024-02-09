@@ -19,8 +19,7 @@ class StructureModel
             $last = mb_substr($city, -1, 1, "UTF-8");
         }
 
-        $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
-        
+        $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");        
         $num = 0;
         $cities = [];
         
@@ -33,8 +32,7 @@ class StructureModel
         }
      
         shuffle($cities);
-        return $cities;
-       
+        return $cities;       
     }
     
     /**
@@ -44,7 +42,7 @@ class StructureModel
      * @param string $city
      * @return 
      */
-    public function memory(string $city)
+    public function Memory(string $city)
     {
         if(!isset($_SESSION['named'])){
             $_SESSION['named'] = [];
@@ -62,7 +60,7 @@ class StructureModel
      * @param
      * @return 
      */
-    public function points()
+    public function Points()
     {
         if(!isset($_SESSION['points'])){
             $_SESSION['points'] = 0;
@@ -73,19 +71,18 @@ class StructureModel
     /**
      * Выполняем проверку, назывался ли город ранее
      *
-     * @param string $candidate
-     * @return render()
+     * @param string $city
+     * @return bool
      */
-    public function test_one(string $candidate)
+    public function RepeatCity(string $city): bool
     {
         foreach ($_SESSION['named'] as $key => $value) { 
-            if($value == $candidate){
+            if($value == $city){
                 $status = "was";
             }
         }
         
-        return isset($status) ? false : true;
-           
+        return isset($status) ? false : true;          
     }
     
     /**
@@ -95,9 +92,9 @@ class StructureModel
      * который назвала система
      *
      * @param string $word
-     * @return 
+     * @return bool
      */
-    public function test_two(string $word)
+    public function FirstLetter(string $word): bool
     {
         $examin = mb_substr($_SESSION['city'], -1, 1, "UTF-8");
         if($examin == "ь" || $examin == "ъ" || $examin == "ы" || $examin == "й"){
@@ -108,8 +105,7 @@ class StructureModel
         
         $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
         
-        return mb_substr($word, 0, 1, "UTF-8") == $letter ? true : false;
-           
+        return mb_substr($word, 0, 1, "UTF-8") == $letter ? true : false;           
     }
     
     /**
@@ -117,9 +113,9 @@ class StructureModel
      * Является ли введенное слово городом
      *
      * @param string $city
-     * @return 
+     * @return bool
      */
-    public function test_three(string $city)
+    public function RealCity(string $city): bool
     {
         $txt = file("src/cities.txt");      
         for ($a = 0; $a < count($txt); $a++){
@@ -130,7 +126,6 @@ class StructureModel
             }
         }
         
-        return isset($status) ? true : false;
-           
+        return isset($status) ? true : false;          
     }
 }
