@@ -6,17 +6,12 @@
         <title>Игра города</title>
         <meta name="description" content="Responsive HTML5 Template" />
         <meta name="keywords" content="Onepage, creative, modern, bootstrap 5, multipurpose, clean" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="website" content="https://shreethemes.in" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="version" content="1.0.0" />
+        <meta name="author" content="Shreethemes" />       
         <!-- favicon -->
-        <link href="images/favicon.ico" rel="shortcut icon">
+        
         <!-- Bootstrap core CSS -->
         <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-        <link href="assets/css/tobii.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
+        <link href="assets/css/tobii.min.css" rel="stylesheet" type="text/css" />                
         <!-- Custom  Css -->
         <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
     </head>
@@ -81,11 +76,7 @@
         </section><!--end section-->
         <!-- End -->   
 
-        <!-- JAVASCRIPTS -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/tobii.min.js"></script>
-        <script src="assets/js/contact.js"></script>
-        <script src="assets/js/feather.min.js"></script>
+        <!-- JAVASCRIPTS -->      
         <!-- Custom -->
         <script src="assets/js/app.js"></script>
     </body>
