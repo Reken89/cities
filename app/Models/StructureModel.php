@@ -10,7 +10,7 @@ class StructureModel
      * @param string $city
      * @return array
      */
-    public function city(string $city): array
+    public function SelectCities(string $city): array
     {
         $examin = mb_substr($city, -1, 1, "UTF-8");
         if($examin == "ь" || $examin == "ъ" || $examin == "ы" || $examin == "й"){
@@ -51,11 +51,8 @@ class StructureModel
             $_SESSION['num'] = 0;
         }
         
-        $num = $_SESSION['num'];
-        $key = $num + 1;
-        $_SESSION['named'][$key] = $city;
-        $_SESSION['num'] = $key;
-       
+        $_SESSION['num'] += 1;
+        $_SESSION['named'][$_SESSION['num']] = $city;       
     }
     
     /**
@@ -70,9 +67,7 @@ class StructureModel
         if(!isset($_SESSION['points'])){
             $_SESSION['points'] = 0;
         }
-        
-        $points = $_SESSION['points'] + 10;
-        $_SESSION['points'] = $points; 
+        $_SESSION['points'] += 10;
     }
     
     /**
@@ -89,11 +84,7 @@ class StructureModel
             }
         }
         
-        if(isset($status)){
-            return false;
-        }else{
-            return true;
-        }
+        return isset($status) ? false : true;
            
     }
     
@@ -117,11 +108,7 @@ class StructureModel
         
         $letter = mb_convert_case($last, MB_CASE_TITLE, "UTF-8");
         
-        if(mb_substr($word, 0, 1, "UTF-8") == $letter){
-            return true;
-        }else{
-            return false;
-        }
+        return mb_substr($word, 0, 1, "UTF-8") == $letter ? true : false;
            
     }
     
@@ -143,11 +130,7 @@ class StructureModel
             }
         }
         
-        if(isset($status)){
-            return true;
-        }else{
-            return false;
-        }
+        return isset($status) ? true : false;
            
     }
 }

@@ -52,7 +52,7 @@ class IndexController extends BaseController
                     //Записываем названный город в список названных
                     $object->memory($city);
 
-                    $answer = $object->city($city);
+                    $answer = $object->SelectCities($city);
 
                     foreach ($answer as $key => $value) { 
                         $candidate = $object->test_one($value);
@@ -75,15 +75,15 @@ class IndexController extends BaseController
                     $_SESSION['text'] = "Вы неправильно ввели название города!";
                 }
             }else{
-                $test_one = $object->test_two($city);
-                $test_two = $object->test_one($city);
+                $test_one = $object->test_one($city);
+                $test_two = $object->test_two($city);
                 $test_three = $object->test_three($city);
                 
                 if($test_one == true && $test_two == true && $test_three == true){
                     //Записываем названный город в список названных
                     $object->memory($city);
 
-                    $answer = $object->city($city);
+                    $answer = $object->SelectCities($city);
 
                     foreach ($answer as $key => $value) { 
                         $candidate = $object->test_one($value);
@@ -103,9 +103,9 @@ class IndexController extends BaseController
                     $object->points();
                 }else{
                     if($test_one == false){
-                        $_SESSION['text'] = "По правилам игры, названный Вами город не подходит";
-                    }elseif ($test_two == false) {
                         $_SESSION['text'] = "Город уже назывался ранее в игре";
+                    }elseif ($test_two == false) {
+                        $_SESSION['text'] = "По правилам игры, названный Вами город не подходит";
                     }elseif ($test_three == false) {
                         $_SESSION['text'] = "Вы неправильно ввели название города!";
                     }
